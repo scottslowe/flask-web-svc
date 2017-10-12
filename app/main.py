@@ -10,31 +10,40 @@ __author__ = 'slowe'
 
 app = Flask(__name__)
 
-if 'SVCURL' in os.environ:
-  svc_url = os.environ.get('SVCURL')
-else:
-  svc_url = 'api'
-
-HOSTNAME = socket.gethostname()
-LOCALADDR = socket.gethostbyname(socket.gethostname())
+host_name = socket.gethostname()
+ip_address = socket.gethostbyname(socket.gethostname())
 
 @app.route('/<svc_url>', methods=['GET'])
-def show_info(svc_url):
-    host = {'hostname': HOSTNAME, 'ip': LOCALADDR}
+def show_info_html(svc_url):
+    if request.headers.getlist('X-Forwarded-For'):
+        proxy_addr = request.remote_addr
+        client_addr = request.headers.getlist('X-Forwarded-For')[0]
+    else:
+        proxy_addr = 'No proxy (direct)'
+        client_addr = request.remote_addr
+    host = {'hostname': host_name, 'ip': ip_address}
     time = datetime.datetime.now().strftime("%Y-%b-%d %H:%M:%S")
-    client = request.remote_addr
+    client = client_addr
+    proxy = proxy_addr
     baseurl = request.base_url
     urlroot = request.url_root
-    return render_template('index.html', title='Home', host=host, client=client, baseurl=baseurl, urlroot=urlroot, time=time)
+    return render_template('index.html', title = 'Home', host = host, client = client, proxy = proxy, baseurl = baseurl, urlroot = urlroot, time = time)
 
 @app.route('/<svc_url>/json', methods=['GET'])
 def show_info_json(svc_url):
-    return jsonify(hostname=HOSTNAME,
-                   ip=LOCALADDR,
-                   time=datetime.datetime.now().strftime("%Y-%b-%d %H:%M:%S"),
-                   client=request.remote_addr,
-                   baseurl=request.base_url,
-                   urlroot=request.url_root)
+    if request.headers.getlist('X-Forwarded-For'):
+        proxy_addr = request.remote_addr
+        client_addr = request.headers.getlist('X-Forwarded-For')[0]
+    else:
+        proxy_addr = 'No proxy (direct)'
+        client_addr = request.remote_addr
+    return jsonify(container_hostname = host_name,
+                   container_ip = ip_address,
+                   time = datetime.datetime.now().strftime("%Y-%b-%d %H:%M:%S"),
+                   proxy = proxy_addr,
+                   client = client_addr,
+                   baseurl = request.base_url,
+                   urlroot = request.url_root)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, threaded=True, port=5000)
+    app.run(host='0.0.0.0', debug=False, threaded=True, port=int(os.getenv('PORT', '5000')))
