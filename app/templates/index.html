@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+      <p><img src="static/logo.png"></p>
+
+      <hr/>
+
+      <h2>Server-Side Information</h2>
+
+        <p>Container hostname: {{ host.hostname }}</p>
+
+        <p>Container private IP address: {{ host.ip }}</p>
+
+      <hr/>
+
+      <h2>Client-Side Information</h2>
+
+        <p>Client IP address: {{ client }}</p>
+
+      <hr/>
+
+      <h2>Request Information</h2>
+
+        <p>Base URL: {{ baseurl }}</p>
+
+        <p>URL Root: {{ urlroot }}</p>
+
+      <p><small><em>Request time is {{ time }}</em></small></p>
+  </body>
+</html>
