@@ -6,7 +6,9 @@ LABEL maintainer="Scott S. Lowe <scott.lowe@scottlowe.org>"
 ARG GIT_COMMIT=unspecified
 LABEL git_commit=$GIT_COMMIT
 
-RUN pip install flask
+RUN pip install flask && \
+    apk add --no-cache curl && \
+    rm -rf /var/cache/apk/*
 
 COPY app /app/
 
