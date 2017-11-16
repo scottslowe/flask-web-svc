@@ -1,0 +1,23 @@
+version: "2"
+services:
+  web-ui:
+    image: newver-14
+    ports:
+      - "5000:5000"
+    environment:
+      - USER_API_HOST=192.168.99.100
+      - USER_API_PORT=6000
+      - ORDER_API_HOST=192.168.99.100
+      - ORDER_API_PORT=7000
+  user-api:
+    image: newver-14
+    ports:
+      - "6000:6000"
+    environment:
+      - PORT=6000
+  order-api:
+    image: newver-14
+    ports:
+      - "7000:7000"
+    environment:
+      - PORT=7000

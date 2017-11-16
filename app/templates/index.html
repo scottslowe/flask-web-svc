@@ -7,28 +7,37 @@
 
       <hr/>
 
-      <h2>Server-Side Information</h2>
+      <h2>Information for "Users" Web Service:</h2>
 
-        <p>Container hostname: {{ host.hostname }}</p>
-
-        <p>Container private IP address: {{ host.ip }}</p>
-
-      <hr/>
-
-      <h2>Client-Side Information</h2>
-
-        <p>Client IP address: {{ client }}</p>
-
-        <p>Proxy IP address: {{ proxy }}</p>
+        <p>Container hostname: {{ users['container_hostname'] }}</p>
+        <p>Container private IP address: {{ users['container_ip'] }}</p>
+        <p>Client IP address: {{ users['client'] }}</p>
+        <p>Proxy IP address: {{ users['proxy'] }}</p>
+        <p>Base URL of request: {{ users['baseurl'] }}</p>
+        <p>URL root of request: {{ users['urlroot'] }}</p>
+        <p>Time of request: {{ users['time'] }}</p>
 
       <hr/>
 
-      <h2>Request Information</h2>
+      <h2>Information for "Orders" Web Service:</h2>
 
-        <p>Base URL: {{ baseurl }}</p>
+        <p>Container hostname: {{ orders['container_hostname'] }}</p>
+        <p>Container private IP address: {{ orders['container_ip'] }}</p>
+        <p>Client IP address: {{ orders['client'] }}</p>
+        <p>Proxy IP address: {{ orders['proxy'] }}</p>
+        <p>Base URL of request: {{ orders['baseurl'] }}</p>
+        <p>URL root of request: {{ orders['urlroot'] }}</p>
+        <p>Time of request: {{ orders['time'] }}</p>
 
-        <p>URL Root: {{ urlroot }}</p>
+      <h2>Information for "Front-End" Web Service:</h2>
 
-      <p><small><em>Request time is {{ time }}</em></small></p>
+        <p>Container hostname: {{ frontend['container_hostname'] }}</p>
+        <p>Container private IP address: {{ frontend['container_ip'] }}</p>
+        <p>Client IP address: {{ frontend['client'] }}</p>
+        <p>Proxy IP address: {{ frontend['proxy'] }}</p>
+        <p>Base URL of request: {{ frontend['baseurl'] }}</p>
+        <p>URL root of request: {{ frontend['urlroot'] }}</p>
+        <p>Time of request: {{ frontend['time'] }}</p>
+
   </body>
 </html>
