@@ -55,14 +55,14 @@ def show_info_json(svc_url):
 def show_info_html():
     # Get information from "users" web service
     user_ws_response = get_svc_info(
-        host = str(os.getenv('USER_API_HOST', 'localhost')),
-        port = str(os.getenv('USER_API_PORT', '5000')),
+        host = str(os.getenv('USER_API_HOST', 'user-api')),
+        port = str(os.getenv('USER_API_PORT', '6000')),
         service = 'users')
 
     # Get information from "orders" web service
     order_ws_response = get_svc_info(
-        host = str(os.getenv('ORDER_API_HOST', 'localhost')),
-        port = str(os.getenv('ORDER_API_PORT', '5000')),
+        host = str(os.getenv('ORDER_API_HOST', 'order-api')),
+        port = str(os.getenv('ORDER_API_PORT', '7000')),
         service = 'orders')
 
     # Gather information for front-end service

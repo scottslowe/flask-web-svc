@@ -7,7 +7,7 @@
 
       <hr/>
 
-      <h2>Information for "Users" Web Service:</h2>
+      <h2>Connection Information for "User" Web Service:</h2>
 
         <p>Container hostname: {{ users['container_hostname'] }}</p>
         <p>Container private IP address: {{ users['container_ip'] }}</p>
@@ -19,7 +19,7 @@
 
       <hr/>
 
-      <h2>Information for "Orders" Web Service:</h2>
+      <h2>Connection Information for "Order" Web Service:</h2>
 
         <p>Container hostname: {{ orders['container_hostname'] }}</p>
         <p>Container private IP address: {{ orders['container_ip'] }}</p>
@@ -29,7 +29,9 @@
         <p>URL root of request: {{ orders['urlroot'] }}</p>
         <p>Time of request: {{ orders['time'] }}</p>
 
-      <h2>Information for "Front-End" Web Service:</h2>
+      <hr/>
+
+      <h2>Connection Information for HTML Front End:</h2>
 
         <p>Container hostname: {{ frontend['container_hostname'] }}</p>
         <p>Container private IP address: {{ frontend['container_ip'] }}</p>
