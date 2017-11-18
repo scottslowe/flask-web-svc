@@ -1,17 +1,17 @@
 version: "2"
 services:
   web-ui:
-    image: bugfix:0.1
+    image: slowe/flask-web-svc:latest
     ports:
       - "5000:5000"
   user-api:
-    image: bugfix:0.1
+    image: slowe/flask-web-svc:latest
     ports:
       - "6000:6000"
     environment:
       - PORT=6000
   order-api:
-    image: bugfix:0.1
+    image: slowe/flask-web-svc:latest
     ports:
       - "7000:7000"
     environment:
