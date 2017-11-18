@@ -1,22 +1,22 @@
 version: "2"
 services:
   web-ui:
-    image: newver-14
+    image: slowe/flask-web-svc:0.4
     ports:
       - "5000:5000"
     environment:
-      - USER_API_HOST=192.168.99.100
+      - USER_API_HOST=user-api
       - USER_API_PORT=6000
-      - ORDER_API_HOST=192.168.99.100
+      - ORDER_API_HOST=order-api
       - ORDER_API_PORT=7000
   user-api:
-    image: newver-14
+    image: slowe/flask-web-svc:0.4
     ports:
       - "6000:6000"
     environment:
       - PORT=6000
   order-api:
-    image: newver-14
+    image: slowe/flask-web-svc:0.4
     ports:
       - "7000:7000"
     environment:
