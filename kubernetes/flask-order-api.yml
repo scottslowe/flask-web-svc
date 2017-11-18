@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: order-api
-        image: slowe/flask-web-svc:0.4
+        image: slowe/flask-web-svc:latest
         ports:
         - containerPort: 7000
         env:
