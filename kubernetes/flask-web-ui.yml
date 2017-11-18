@@ -1,0 +1,41 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-ui
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        role: web-ui
+    spec:
+      containers:
+      - name: web-ui
+        image: slowe/flask-web-svc:0.4
+        ports:
+        - containerPort: 5000
+        env:
+        - name: USER_API_HOST
+          value: "user-api"
+        - name: USER_API_PORT
+          value: "6000"
+        - name: ORDER_API_HOST
+          value: "order-api"
+        - name: ORDER_API_PORT
+          value: "7000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-ui
+  labels:
+    role: web-ui-svc
+spec:
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    role: web-ui
+  type: LoadBalancer
+---
