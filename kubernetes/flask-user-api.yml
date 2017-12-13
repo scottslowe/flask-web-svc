@@ -37,5 +37,4 @@ spec:
     targetPort: 6000
   selector:
     role: user-api
-  type: NodePort
 ---

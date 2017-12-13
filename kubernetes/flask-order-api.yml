@@ -37,5 +37,4 @@ spec:
     targetPort: 7000
   selector:
     role: order-api
-  type: NodePort
 ---
